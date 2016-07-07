@@ -1,0 +1,10 @@
+         function setData(title_, description_, image_){
+
+        	 db.transaction(function (tx) {
+ tx.executeSql('CREATE TABLE IF NOT EXISTS ' + storeName + ' (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, image TEXT)', [],
+		 null,
+		 null);            
+
+  tx.executeSql('INSERT INTO ' + storeName + ' (title, description, image) VALUES (?, ?, ?)', [title_, description_, image_], null, onError);
+         });
+         };
